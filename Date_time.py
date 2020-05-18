@@ -8,10 +8,12 @@ import sys;
 def displayLocalTime():
     localtime=time.asctime(time.localtime(time.time()))
     print("The local time:: ", localtime)
+    return;
 #user defined function to display calender
 def displayCal(year,month):
     cal=calendar.month(int(year),int(month))
     print(cal)
+    return;
 
 #Calling function without passing and passing argument
 
