@@ -13,7 +13,7 @@ r = sr.Recognizer()
 
 # Function to convert text to
 # speech
-def SpeakText(command):
+def speakText(command):
     # Initialize the engine
     engine = pyttsx3.init()
     engine.say(command)
@@ -40,15 +40,16 @@ while (1):
             # listens for the user's input
             audio2 = r.listen(source2)
 
-            # Using ggogle to recognize audio
-            MyText = r.recognize_google(audio2)
-            MyText = MyText.lower()
+            # Using google to recognize audio
+            myText = r.recognize_google(audio2)
+            myText = myText.lower()
 
-            print("Did you say " + MyText)
-            SpeakText(MyText)
-
-            if MyText=='stop' or MyText=='exit':
+            if myText=='stop' or myText=='exit':
                 break
+            print("Did you say " + myText)
+            speakText(myText)
+
+
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
 
