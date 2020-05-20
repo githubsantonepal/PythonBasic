@@ -46,7 +46,7 @@ while (1):
 
             if myText=='stop' or myText=='exit':
                 break
-            print("Did you say " + myText)
+            print("You said " + myText)
             speakText(myText)
 
 
