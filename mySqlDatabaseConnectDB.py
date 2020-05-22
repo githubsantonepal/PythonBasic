@@ -21,12 +21,15 @@ class DatabaseConnection:
             exit()
 
     def createTable(self):
-        #try:
-            pass
-            #tablename
-            #mycursor.execute("CREATE TABLE ")
+        try:
 
-        #except:
+            tablename=input("Enter Name for the Table")
+            mycursor.execute("CREATE TABLE "+tablename+" (ID INT AUTO_INCREMENT PRIMARY KEY)")
+            time.sleep(3)
+
+
+        except:
+            pass
 
     def dropTable(self):
         pass
@@ -38,14 +41,34 @@ class DatabaseConnection:
             print(i)
 
     def alterTable(self):
-        # ADDING EXTRA KEY FOR THE TABLE WITH PRIMARY KEY
-        mycursor.execute("ALTER TABLE customers ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
+        # ADDING EXTRA COLUMN FOR THE TABLE
+        try:
+            tablename = input("which table to alter? ")
+            n=input("How many Columns? ")
+            for i in range(int(n)):
+                headingname=input("Enter the Name of field")
+                mycursor.execute("ALTER TABLE " + tablename + " ADD "+headingname+" VARCHAR(255)")
+        except:
+            print("Specified Table does not exist")
 
     def insertValue(self):
+        try:
+            tablename = input("Which table to add the records? ")
+            n=input("How many Columns? ")
+            for i in range(int(n)):
+                headingname=input("Enter the Name of field")
+                mycursor.execute("ALTER TABLE " + tablename + " ADD "+headingname+" VARCHAR(255)")
+        except:
+            print("Specified Table does not exist")
+
         pass
 
     def selectValue(self):
-        pass
+        try:
+            tablename=input("Which table to access? ")
+            mycursor.execute("SELECT * FROM "+tablename)
+        except:
+            print("invalid database")
 
     def deleteValue(self):
         pass
