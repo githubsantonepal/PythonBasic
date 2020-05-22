@@ -50,6 +50,7 @@ class DatabaseConnection:
         print("1: To Create Database")
         print("2. To Drop Database")
         print("3. To Show Databases")
+        print("Q. To exit the program")
         response=input("What do you want to do?")
 
 db=DatabaseConnection()

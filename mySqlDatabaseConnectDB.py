@@ -43,6 +43,8 @@ class DatabaseConnection:
     def alterTable(self):
         # ADDING EXTRA COLUMN FOR THE TABLE
         try:
+            # Adding the field name, address, age --- for customer table
+            # Adding the field name, price, quantity --- for product table
             tablename = input("which table to alter? ")
             n=input("How many Columns? ")
             for i in range(int(n)):
@@ -54,19 +56,30 @@ class DatabaseConnection:
     def insertValue(self):
         try:
             tablename = input("Which table to add the records? ")
-            n=input("How many Columns? ")
-            for i in range(int(n)):
-                headingname=input("Enter the Name of field")
-                mycursor.execute("ALTER TABLE " + tablename + " ADD "+headingname+" VARCHAR(255)")
+            n=input("How many records? ")
+            if tablename.strip()=='customers':
+                for i in range(int(n)):
+                    value1=input("Enter the Name of Customer ")
+                    value2=input("Enter the Address ")
+                    value3=input("Enter Age ")
+                    sql="INSERT INTO customers VALUES(%s, %s, %s)"
+                    val=(value1,value2,value3)
+                    mycursor.execute(sql,val)
+            else:
+                for i in range(int(n)):
+                    value1=input("Enter the Name of Product ")
+                    value2=input("Enter the Price ")
+                    value3=input("Enter the Quantity ")
+                    mycursor.execute("INSERT INTO "+tablename+" VALUES("+value1, value2, value3+")")
         except:
             print("Specified Table does not exist")
 
-        pass
 
     def selectValue(self):
         try:
             tablename=input("Which table to access? ")
-            mycursor.execute("SELECT * FROM "+tablename)
+            x=mycursor.execute("SELECT *FROM "+tablename)
+            print(x)
         except:
             print("invalid database")
 
